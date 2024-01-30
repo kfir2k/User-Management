@@ -1,12 +1,11 @@
+import { userCreateionController } from "./controller.js";
 const registerNewUserBtn = document.getElementById("registerNewUserBtn");
 const loginForm = document.getElementById("login");
 const modalRegister = document.getElementById("modalRegister");
+const modalLogin = document.getElementById("modalLogin");
 const forms = document.querySelectorAll("form");
-const usernameRegister = document.getElementById("usernameRegister");
-const passwordRegister = document.getElementById("passwordRegister");
-const emailRegister = document.getElementById("emailRegister");
-const firstNameRegister = document.getElementById("firstNameRegister");
-const lastNameRegister = document.getElementById("lastNameRegister");
+const [usernameRegister, passwordRegister, emailRegister, firstNameRegister, lastNameRegister] = modalRegister.querySelectorAll("input");
+const [usernameLogin, passwordLogin] = modalLogin.querySelectorAll("input");
 console.log("Forms", forms);
 forms.forEach((element) => {
     element === null || element === void 0 ? void 0 : element.addEventListener("submit", (event) => {
@@ -28,13 +27,3 @@ function renderModal(htmlElement, isShow) {
 //let kfir = new User("kfir2k", "12345", "kfir.kotler@gmail.com", "Kfir", "Kotler")
 //console.log(kfir);
 forms[0].addEventListener("submit", userCreateionController);
-function userCreateionController() {
-    console.log("Controller");
-    console.log("Value????", usernameRegister.value);
-    //let usernameValue:string = usernameRegister
-    //get values from dom
-    //add new user
-    //push user to arry
-    //render user in a dynmic tayble
-}
-export {};
