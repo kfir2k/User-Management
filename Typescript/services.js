@@ -1,3 +1,4 @@
+console.log("Services Online");
 var STATUS;
 (function (STATUS) {
     STATUS[STATUS["ONLINE"] = 0] = "ONLINE";
@@ -7,13 +8,11 @@ var STATUS;
 const usersArry = [];
 export class User {
     constructor(username, password, email, firstName, lastName) {
-        this.username = username;
-        this.password = password;
-        this.email = email;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.status = STATUS.PENDING;
-    }
-    pushUserToArry() {
+        this._username = username;
+        this._password = password;
+        this._email = email;
+        this._firstName = firstName;
+        this._lastName = lastName;
+        this._status = STATUS.PENDING;
     }
 }
