@@ -7,12 +7,9 @@ const arrayOfUsers = new UsersArry()
 
 
 
-export class ControllerRegister{
+export class Controller{
 	start() {
 
-		
-	
-	
 
 	}
 

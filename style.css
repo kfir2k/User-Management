@@ -36,7 +36,7 @@ body{
 
 
 .modal-register {
-	display: none;
+	display: flex;
 	background: rgba(0, 0, 0, 0.5);
 
 }
@@ -76,7 +76,7 @@ body{
 }
 
 /* Style for the Register And Login button */
-#registerAndLoginBtn {
+#registerBtn {
 	background-color: #4CAF50;
 	color: #fff;
 	padding: 10px 20px;
@@ -87,7 +87,7 @@ body{
 	transition: background-color 0.3s;
 }
 
-#registerAndLoginBtn:hover {
+#registerBtn:hover {
 	background-color: #45a049;
 }
 
@@ -104,7 +104,7 @@ body{
 
 
 .modal-login {
-
+	display: block;
 	background: rgba(0, 0, 0, 0.5);
 
 }

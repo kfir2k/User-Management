@@ -1,9 +1,9 @@
 console.log("Services Online");
 var STATUS;
 (function (STATUS) {
-    STATUS["ONLINE"] = "Online";
-    STATUS["OFFLINE"] = "Offline";
-    STATUS["PENDING"] = "Pending";
+    STATUS["ONLINE"] = "ONLINE";
+    STATUS["OFFLINE"] = "OFFLINE";
+    STATUS["PENDING"] = "PENDING";
 })(STATUS || (STATUS = {}));
 export class UsersArry {
     constructor() {
@@ -36,11 +36,23 @@ export class UsersArry {
             lastNameCell.textContent = user.lastName;
             const statusCell = document.createElement("td");
             statusCell.textContent = user.status;
+            //const editButton = document.createElement("button");
+            //editButton.textContent = "Edit";
+            //editButton.addEventListener("click", () => this.editData(user));
+            const logoutButton = document.createElement("button");
+            logoutButton.textContent = "Logout";
+            logoutButton.addEventListener("click", () => this.logoutUser(user));
+            const deleteButton = document.createElement("button");
+            deleteButton.textContent = "delete";
+            deleteButton.addEventListener("click", () => this.deleteUser(user));
             tableRow.appendChild(usernameCell);
             tableRow.appendChild(emailCell);
             tableRow.appendChild(firstNameCell);
             tableRow.appendChild(lastNameCell);
             tableRow.appendChild(statusCell);
+            //tableRow.appendChild(editButton);
+            tableRow.appendChild(logoutButton);
+            tableRow.appendChild(deleteButton);
             tbody.appendChild(tableRow);
         }
     }
@@ -49,6 +61,18 @@ export class UsersArry {
             return false;
         }
         return true;
+    }
+    deleteUser(user) {
+        console.log("this:", this);
+        console.log("User:", user);
+        let indexToDelete = this._array.findIndex(obj => obj === user);
+        this._array.splice(indexToDelete, 1);
+        this.renderUsers();
+    }
+    logoutUser(user) {
+        let indexOfClickedRow = this._array.findIndex(obj => obj === user);
+        this._array[indexOfClickedRow].status = STATUS.OFFLINE;
+        this.renderUsers();
     }
     get array() {
         return this._array;

@@ -1,13 +1,14 @@
 //view
-import { ControllerRegister } from "./controller.js";
+import { Controller } from "./controller.js";
 console.log("View online");
-const registerNewUserBtn = document.getElementById("registerNewUserBtn");
+const registerNewUserBtn = document.getElementById("registerBtn");
 const loginForm = document.getElementById("login");
 const modalRegister = document.getElementById("modalRegister");
 const modalLogin = document.getElementById("modalLogin");
 const forms = document.querySelectorAll("form");
 const [usernameRegister, passwordRegister, emailRegister, firstNameRegister, lastNameRegister] = modalRegister.querySelectorAll("input");
 const [usernameLogin, passwordLogin] = modalLogin.querySelectorAll("input");
+let showLoginModal = false;
 //delete warnings on focus in inputs of modal Register
 modalRegister.querySelectorAll("input").forEach((input) => input === null || input === void 0 ? void 0 : input.addEventListener("focus", () => {
     const warningMsg = document.querySelectorAll(".warning-msg");
@@ -18,10 +19,6 @@ forms.forEach((element) => {
     element === null || element === void 0 ? void 0 : element.addEventListener("submit", (event) => {
         event.preventDefault();
     });
-});
-registerNewUserBtn === null || registerNewUserBtn === void 0 ? void 0 : registerNewUserBtn.addEventListener("click", () => {
-    renderModal(modalRegister, true, "flex");
-    renderModal(loginForm, false);
 });
 function renderModal(htmlElement, isShow, flex) {
     if (flex) {
@@ -69,7 +66,6 @@ const validateName = function (name) {
 };
 const submitRegister = () => {
     console.log("Raw Inputs", usernameRegister.value, passwordRegister.value, emailRegister.value, firstNameRegister.value, lastNameRegister.value);
-    let isValidUser = false;
     let verifiedUsername = "";
     let verifiedPassword = "";
     let verifiedEmail = "";
@@ -108,16 +104,19 @@ const submitRegister = () => {
     }
     if (verifiedUsername.length > 0 && verifiedPassword.length > 0 && verifiedEmail.length > 0 && verifiedFirstName.length > 0 && verifiedLastName.length > 0) {
         let arryOfVerifiedUserDetiels = [verifiedUsername.toString(), verifiedPassword.toString(), verifiedEmail.toString(), verifiedFirstName.toString(), verifiedLastName.toString()];
-        if (ControllerRegister.checkDuplcates(arryOfVerifiedUserDetiels)) {
+        if (Controller.checkDuplcates(arryOfVerifiedUserDetiels)) {
             return warningMsg("User with this name already exists", usernameRegister);
         }
-        ControllerRegister.getUserFromSubmit(arryOfVerifiedUserDetiels);
+        renderModal(modalLogin, true);
+        Controller.getUserFromSubmit(arryOfVerifiedUserDetiels);
         usernameRegister.value = "";
         passwordRegister.value = "";
         emailRegister.value = "";
         firstNameRegister.value = "";
         lastNameRegister.value = "";
-        renderModal(loginForm, true);
     }
 };
+const submitLogin = () => {
+};
 forms[0].addEventListener("submit", submitRegister);
+forms[1].addEventListener("submit", submitLogin);

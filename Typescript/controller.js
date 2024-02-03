@@ -4,7 +4,7 @@ import "./services.js";
 import { User, UsersArry } from "./services.js";
 import "./view.js";
 const arrayOfUsers = new UsersArry();
-export class ControllerRegister {
+export class Controller {
     start() {
     }
     static checkDuplcates(arry) {

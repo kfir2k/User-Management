@@ -2,9 +2,9 @@ console.log("Services Online");
 
 
 enum STATUS{
-	ONLINE = "Online",
-	OFFLINE = "Offline",
-	PENDING = "Pending",
+	ONLINE = "ONLINE",
+	OFFLINE = "OFFLINE",
+	PENDING = "PENDING",
 }
 
 export class UsersArry{
@@ -42,7 +42,24 @@ export class UsersArry{
 			lastNameCell.textContent = user.lastName;
 			
 			const statusCell = document.createElement("td");
-            statusCell.textContent = user.status;
+			statusCell.textContent = user.status;
+			
+
+			//const editButton = document.createElement("button");
+      		//editButton.textContent = "Edit";
+			//editButton.addEventListener("click", () => this.editData(user));
+			
+			const logoutButton = document.createElement("button");
+      		logoutButton.textContent = "Logout";
+			logoutButton.addEventListener("click", () => this.logoutUser(user));
+			
+			const deleteButton = document.createElement("button");
+      		deleteButton.textContent = "delete";
+      		deleteButton.addEventListener("click", () => this.deleteUser(user));
+      		
+
+
+
 
 
 
@@ -51,7 +68,11 @@ export class UsersArry{
 			tableRow.appendChild(firstNameCell);
 			tableRow.appendChild(lastNameCell);
 			tableRow.appendChild(statusCell);
-		
+			//tableRow.appendChild(editButton);
+			tableRow.appendChild(logoutButton);
+			tableRow.appendChild(deleteButton);
+
+
             tbody.appendChild(tableRow);
         }
 
@@ -64,6 +85,23 @@ export class UsersArry{
 			return false
 		}
 		return true
+	}
+
+
+	deleteUser(user:User) {
+		console.log("this:",this);
+		console.log("User:", user);
+		let indexToDelete = this._array.findIndex(obj => obj === user);
+		this._array.splice(indexToDelete, 1)
+		this.renderUsers()
+		
+	}
+
+	logoutUser(user: User) {
+		
+		let indexOfClickedRow:number = this._array.findIndex(obj => obj === user);
+		this._array[indexOfClickedRow].status = STATUS.OFFLINE
+		this.renderUsers()
 	}
 
 
