@@ -1,4 +1,5 @@
 //view
+import { ControllerRegister } from "./controller.js";
 
 
 console.log("View online");
@@ -10,8 +11,12 @@ const forms: NodeListOf<HTMLFormElement> = document.querySelectorAll("form");
 const [usernameRegister, passwordRegister, emailRegister, firstNameRegister, lastNameRegister] = modalRegister.querySelectorAll("input")
 const [usernameLogin, passwordLogin] = modalLogin.querySelectorAll("input")
 
-
-modalRegister.querySelectorAll("input").forEach((input) => input?.addEventListener("focus", () => { deleteWarnings(true) }))
+//delete warnings on focus in inputs of modal Register
+modalRegister.querySelectorAll("input").forEach((input) => input?.addEventListener("focus", () => {
+	const warningMsg = document.querySelectorAll(".warning-msg")
+	if(warningMsg.length > 0)
+	deleteWarnings(true)
+}))
 
 
 
@@ -23,7 +28,7 @@ forms.forEach((element) => {
 })
 
 registerNewUserBtn?.addEventListener("click", () => {
-	renderModal(modalRegister, true);
+	renderModal(modalRegister, true , "flex");
 	renderModal(loginForm, false);
 
 }
@@ -37,7 +42,12 @@ registerNewUserBtn?.addEventListener("click", () => {
 
 
 
-function renderModal(htmlElement: HTMLCanvasElement, isShow: boolean) {
+function renderModal(htmlElement: HTMLCanvasElement, isShow: boolean, flex?: string) {
+	
+	if (flex) {
+		htmlElement.style.display = "flex"
+		return
+	}
 	if (isShow) {
 		htmlElement.style.display = "block"
 
@@ -95,49 +105,64 @@ const validateName = function(name:string):boolean {
 
 const submitRegister = () =>{
 	console.log("Raw Inputs",usernameRegister.value, passwordRegister.value, emailRegister.value, firstNameRegister.value, lastNameRegister.value);
-	
+	let isValidUser: boolean = false
 	let verifiedUsername: String = ""
 	let verifiedPassword: String = ""
 	let verifiedEmail: String = ""
 	let verifiedFirstName: String = ""
 	let verifiedLastName: String = ""
 	
-	
+	deleteWarnings(true);
 	
 	if (validateUsername(usernameRegister.value)) {
-			console.log("username valid");
 		verifiedUsername = usernameRegister.value
-		usernameRegister.value = "";
 	} else {
 		warningMsg("Not a vaild username", usernameRegister);
-		console.log("test");
 	}
-
 
 	if (validatePassword(passwordRegister.value)) {
 		verifiedPassword = passwordRegister.value
-		passwordRegister.value = "";
+	
 	} else {
 		warningMsg("Needed a stronger password", passwordRegister);
 	}
 
 	if (validateEmail(emailRegister.value)) {
 		verifiedEmail = emailRegister.value
-		emailRegister.value = "";
+		
 	} else {
-		console.log("Email isnt a Vaild Email.");
 		warningMsg("Email isnt valied", emailRegister);
 	}
-	
+	if (validateName(firstNameRegister.value)) {
+		verifiedFirstName = firstNameRegister.value
+	} else {
+		warningMsg("First Name isnt valied", firstNameRegister);
+	}
+	if (validateName(lastNameRegister.value)) {
+		verifiedLastName = lastNameRegister.value
+
+	} else {
+		warningMsg("Last Name isnt valied", lastNameRegister);
+	}
 
 
-	
-	
-	//emailRegister.value = "";
-	//firstNameRegister.value = "";
-	//lastNameRegister.value = "";
+	if (verifiedUsername.length > 0 && verifiedPassword.length > 0 && verifiedEmail.length > 0 && verifiedFirstName.length > 0 && verifiedLastName.length > 0) {
+		let arryOfVerifiedUserDetiels: string[] = [verifiedUsername.toString(), verifiedPassword.toString(), verifiedEmail.toString(), verifiedFirstName.toString(), verifiedLastName.toString()];
+		if (ControllerRegister.checkDuplcates(arryOfVerifiedUserDetiels)) {
+			return warningMsg("User with this name already exists", usernameRegister);
+		}
+		ControllerRegister.getUserFromSubmit(arryOfVerifiedUserDetiels)
+		usernameRegister.value = "";
+		passwordRegister.value = "";
+		emailRegister.value = "";
+		firstNameRegister.value = "";
+		lastNameRegister.value = "";
 
+		renderModal(loginForm, true);
 
+		
+		
+	}
 
 }
 

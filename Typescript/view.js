@@ -1,5 +1,5 @@
-"use strict";
 //view
+import { ControllerRegister } from "./controller.js";
 console.log("View online");
 const registerNewUserBtn = document.getElementById("registerNewUserBtn");
 const loginForm = document.getElementById("login");
@@ -8,17 +8,26 @@ const modalLogin = document.getElementById("modalLogin");
 const forms = document.querySelectorAll("form");
 const [usernameRegister, passwordRegister, emailRegister, firstNameRegister, lastNameRegister] = modalRegister.querySelectorAll("input");
 const [usernameLogin, passwordLogin] = modalLogin.querySelectorAll("input");
-modalRegister.querySelectorAll("input").forEach((input) => input === null || input === void 0 ? void 0 : input.addEventListener("focus", () => { deleteWarnings(true); }));
+//delete warnings on focus in inputs of modal Register
+modalRegister.querySelectorAll("input").forEach((input) => input === null || input === void 0 ? void 0 : input.addEventListener("focus", () => {
+    const warningMsg = document.querySelectorAll(".warning-msg");
+    if (warningMsg.length > 0)
+        deleteWarnings(true);
+}));
 forms.forEach((element) => {
     element === null || element === void 0 ? void 0 : element.addEventListener("submit", (event) => {
         event.preventDefault();
     });
 });
 registerNewUserBtn === null || registerNewUserBtn === void 0 ? void 0 : registerNewUserBtn.addEventListener("click", () => {
-    renderModal(modalRegister, true);
+    renderModal(modalRegister, true, "flex");
     renderModal(loginForm, false);
 });
-function renderModal(htmlElement, isShow) {
+function renderModal(htmlElement, isShow, flex) {
+    if (flex) {
+        htmlElement.style.display = "flex";
+        return;
+    }
     if (isShow) {
         htmlElement.style.display = "block";
     }
@@ -60,37 +69,55 @@ const validateName = function (name) {
 };
 const submitRegister = () => {
     console.log("Raw Inputs", usernameRegister.value, passwordRegister.value, emailRegister.value, firstNameRegister.value, lastNameRegister.value);
+    let isValidUser = false;
     let verifiedUsername = "";
     let verifiedPassword = "";
     let verifiedEmail = "";
     let verifiedFirstName = "";
     let verifiedLastName = "";
+    deleteWarnings(true);
     if (validateUsername(usernameRegister.value)) {
-        console.log("username valid");
         verifiedUsername = usernameRegister.value;
-        usernameRegister.value = "";
     }
     else {
         warningMsg("Not a vaild username", usernameRegister);
-        console.log("test");
     }
     if (validatePassword(passwordRegister.value)) {
         verifiedPassword = passwordRegister.value;
-        passwordRegister.value = "";
     }
     else {
         warningMsg("Needed a stronger password", passwordRegister);
     }
     if (validateEmail(emailRegister.value)) {
         verifiedEmail = emailRegister.value;
-        emailRegister.value = "";
     }
     else {
-        console.log("Email isnt a Vaild Email.");
         warningMsg("Email isnt valied", emailRegister);
     }
-    //emailRegister.value = "";
-    //firstNameRegister.value = "";
-    //lastNameRegister.value = "";
+    if (validateName(firstNameRegister.value)) {
+        verifiedFirstName = firstNameRegister.value;
+    }
+    else {
+        warningMsg("First Name isnt valied", firstNameRegister);
+    }
+    if (validateName(lastNameRegister.value)) {
+        verifiedLastName = lastNameRegister.value;
+    }
+    else {
+        warningMsg("Last Name isnt valied", lastNameRegister);
+    }
+    if (verifiedUsername.length > 0 && verifiedPassword.length > 0 && verifiedEmail.length > 0 && verifiedFirstName.length > 0 && verifiedLastName.length > 0) {
+        let arryOfVerifiedUserDetiels = [verifiedUsername.toString(), verifiedPassword.toString(), verifiedEmail.toString(), verifiedFirstName.toString(), verifiedLastName.toString()];
+        if (ControllerRegister.checkDuplcates(arryOfVerifiedUserDetiels)) {
+            return warningMsg("User with this name already exists", usernameRegister);
+        }
+        ControllerRegister.getUserFromSubmit(arryOfVerifiedUserDetiels);
+        usernameRegister.value = "";
+        passwordRegister.value = "";
+        emailRegister.value = "";
+        firstNameRegister.value = "";
+        lastNameRegister.value = "";
+        renderModal(loginForm, true);
+    }
 };
 forms[0].addEventListener("submit", submitRegister);
