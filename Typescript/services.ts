@@ -119,6 +119,12 @@ export class UsersArry {
 		this.renderUsers()
 	}
 
+	loginUser(username:string){
+		let indexOfClickedRow: number = this._array.findIndex(obj => obj.username === username);
+		this._array[indexOfClickedRow].status = STATUS.ONLINE
+		this.renderUsers()
+	}
+
 
 
 	get array() {

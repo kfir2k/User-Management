@@ -82,6 +82,11 @@ export class UsersArry {
         this._array[indexOfClickedRow].status = STATUS.OFFLINE;
         this.renderUsers();
     }
+    loginUser(username) {
+        let indexOfClickedRow = this._array.findIndex(obj => obj.username === username);
+        this._array[indexOfClickedRow].status = STATUS.ONLINE;
+        this.renderUsers();
+    }
     get array() {
         return this._array;
     }

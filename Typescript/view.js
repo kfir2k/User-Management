@@ -12,6 +12,11 @@ modalRegister.querySelectorAll("input").forEach((input) => input === null || inp
     if (warningMsg.length > 0)
         deleteWarnings(true);
 }));
+modalLogin.querySelectorAll("input").forEach((input) => input === null || input === void 0 ? void 0 : input.addEventListener("focus", () => {
+    const warningMsg = document.querySelectorAll(".warning-msg");
+    if (warningMsg.length > 0)
+        deleteWarnings(true);
+}));
 forms.forEach((element) => {
     element === null || element === void 0 ? void 0 : element.addEventListener("submit", (event) => {
         event.preventDefault();
@@ -114,10 +119,16 @@ const submitRegister = () => {
     }
 };
 const submitLogin = () => {
-    usernameLogin.value;
-    passwordLogin.value;
-    Controller.checkLogin(usernameLogin.value, passwordLogin.value);
-    console.log("test");
+    deleteWarnings(true);
+    const isUserLoggedIn = Controller.checkLogin(usernameLogin.value, passwordLogin.value);
+    console.log(isUserLoggedIn);
+    if (isUserLoggedIn) {
+        usernameLogin.value = "";
+        passwordLogin.value = "";
+    }
+    if (!isUserLoggedIn) {
+        warningMsg("Wrong Credentials*", usernameLogin);
+    }
 };
 forms[0].addEventListener("submit", submitRegister);
 forms[1].addEventListener("submit", submitLogin);

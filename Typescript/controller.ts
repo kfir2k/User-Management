@@ -7,7 +7,7 @@ const arrayOfUsers = new UsersArry()
 
 
 
-export class Controller{
+export class Controller {
 	start() {
 
 
@@ -15,9 +15,9 @@ export class Controller{
 
 
 
-	static checkDuplcates(arry: Array<string>):boolean {
-		
-		const [userName , password , email , firstName , lastName] = arry
+	static checkDuplcates(arry: Array<string>): boolean {
+
+		const [userName, password, email, firstName, lastName] = arry
 		const user = new User(userName, password, email, firstName, lastName)
 		return arrayOfUsers.isDuplcated(user)
 
@@ -25,19 +25,26 @@ export class Controller{
 	}
 
 	static getUserFromSubmit(arry: Array<string>) {
-		const [userName , password , email , firstName , lastName] = arry
+		const [userName, password, email, firstName, lastName] = arry
 		const user = new User(userName, password, email, firstName, lastName)
 		console.log("User object from controller", user);
-	
+
 		arrayOfUsers.addUser(user)
 		arrayOfUsers.renderUsers()
 		console.log(arrayOfUsers);
 	}
 
-	static checkLogin(login:string, password:string):boolean{
-		arrayOfUsers.isUserAttributesCorrectForLogin("username" , login)
-		// arrayOfUsers.isUserAttributesCorrectForLogin("username" , login)
-		
+	static checkLogin(username: string, password: string): boolean {
+		const isUserName = arrayOfUsers.isUserAttributesCorrectForLogin("username", username)
+		const isPassword = arrayOfUsers.isUserAttributesCorrectForLogin("password", password)
+		console.log("======", isUserName, isPassword);
+
+		if (isUserName && isPassword) {
+			arrayOfUsers.loginUser(username);
+			return true
+		}
+		return false
+
 
 	}
 
