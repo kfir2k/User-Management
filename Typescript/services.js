@@ -62,6 +62,14 @@ export class UsersArry {
         }
         return true;
     }
+    isUserAttributesCorrectForLogin(attribute, inputFromUser) {
+        console.log("attribute", attribute);
+        console.log("inputFromUser", inputFromUser);
+        if (this._array.find((obj) => obj[attribute] === inputFromUser)) {
+            return true;
+        }
+        return false;
+    }
     deleteUser(user) {
         console.log("this:", this);
         console.log("User:", user);

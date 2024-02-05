@@ -1,13 +1,13 @@
 console.log("Services Online");
 
 
-enum STATUS{
+enum STATUS {
 	ONLINE = "ONLINE",
 	OFFLINE = "OFFLINE",
 	PENDING = "PENDING",
 }
 
-export class UsersArry{
+export class UsersArry {
 	private _array: Array<User>
 	constructor() {
 		this._array = [];
@@ -18,52 +18,52 @@ export class UsersArry{
 	removeUser(user: User) {
 		const index = this._array.indexOf(user)
 		if (index !== -1) {
-            this._array.splice(index, 1);
-        } else {
-            console.log(`${user} not found in the array.`);
+			this._array.splice(index, 1);
+		} else {
+			console.log(`${user} not found in the array.`);
 		}
 	}
-   renderUsers() {
-	const tbody = document.querySelector("tbody") as HTMLElement;
-  	tbody.innerHTML = "";
-        for (let user of this._array) {
+	renderUsers() {
+		const tbody = document.querySelector("tbody") as HTMLElement;
+		tbody.innerHTML = "";
+		for (let user of this._array) {
 			const tableRow = document.createElement("tr");
-			
-            const usernameCell = document.createElement("td");
-            usernameCell.textContent = user.username;
 
-            const emailCell = document.createElement("td");
+			const usernameCell = document.createElement("td");
+			usernameCell.textContent = user.username;
+
+			const emailCell = document.createElement("td");
 			emailCell.textContent = user.email;
-			
+
 			const firstNameCell = document.createElement("td");
 			firstNameCell.textContent = user.firstName;
-			
+
 			const lastNameCell = document.createElement("td");
 			lastNameCell.textContent = user.lastName;
-			
+
 			const statusCell = document.createElement("td");
 			statusCell.textContent = user.status;
-			
+
 
 			//const editButton = document.createElement("button");
-      		//editButton.textContent = "Edit";
+			//editButton.textContent = "Edit";
 			//editButton.addEventListener("click", () => this.editData(user));
-			
+
 			const logoutButton = document.createElement("button");
-      		logoutButton.textContent = "Logout";
+			logoutButton.textContent = "Logout";
 			logoutButton.addEventListener("click", () => this.logoutUser(user));
-			
+
 			const deleteButton = document.createElement("button");
-      		deleteButton.textContent = "delete";
-      		deleteButton.addEventListener("click", () => this.deleteUser(user));
-      		
+			deleteButton.textContent = "delete";
+			deleteButton.addEventListener("click", () => this.deleteUser(user));
 
 
 
 
 
 
-            tableRow.appendChild(usernameCell);
+
+			tableRow.appendChild(usernameCell);
 			tableRow.appendChild(emailCell);
 			tableRow.appendChild(firstNameCell);
 			tableRow.appendChild(lastNameCell);
@@ -73,12 +73,12 @@ export class UsersArry{
 			tableRow.appendChild(deleteButton);
 
 
-            tbody.appendChild(tableRow);
-        }
+			tbody.appendChild(tableRow);
+		}
 
-        
+
 	}
-	
+
 
 	isDuplcated(user: User): boolean {
 		if (!this._array.find((arryU) => arryU.username === user.username)) {
@@ -88,18 +88,33 @@ export class UsersArry{
 	}
 
 
-	deleteUser(user:User) {
-		console.log("this:",this);
+
+	isUserAttributesCorrectForLogin(attribute: keyof User, inputFromUser: string): boolean {
+
+		console.log("attribute", attribute);
+		console.log("inputFromUser", inputFromUser);
+
+
+
+		if (this._array.find((obj) => obj[attribute] === inputFromUser)) {
+			return true
+		}
+		return false
+	}
+
+
+	deleteUser(user: User) {
+		console.log("this:", this);
 		console.log("User:", user);
 		let indexToDelete = this._array.findIndex(obj => obj === user);
 		this._array.splice(indexToDelete, 1)
 		this.renderUsers()
-		
+
 	}
 
 	logoutUser(user: User) {
-		
-		let indexOfClickedRow:number = this._array.findIndex(obj => obj === user);
+
+		let indexOfClickedRow: number = this._array.findIndex(obj => obj === user);
 		this._array[indexOfClickedRow].status = STATUS.OFFLINE
 		this.renderUsers()
 	}
@@ -107,7 +122,7 @@ export class UsersArry{
 
 
 	get array() {
-		return  this._array
+		return this._array
 	}
 }
 
@@ -174,12 +189,12 @@ export class User {
 
 
 
-		
-		
+
+
 }
 
 
-	
+
 
 
 

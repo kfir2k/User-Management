@@ -20,4 +20,8 @@ export class Controller {
         arrayOfUsers.renderUsers();
         console.log(arrayOfUsers);
     }
+    static checkLogin(login, password) {
+        arrayOfUsers.isUserAttributesCorrectForLogin("username", login);
+        // arrayOfUsers.isUserAttributesCorrectForLogin("username" , login)
+    }
 }

@@ -1,26 +1,20 @@
 //view
 import { Controller } from "./controller.js";
-
-
 console.log("View online");
-const registerNewUserBtn = document.getElementById("registerBtn");
-const loginForm = document.getElementById("login") as HTMLCanvasElement;
 const modalRegister = document.getElementById("modalRegister") as HTMLCanvasElement;
 const modalLogin = document.getElementById("modalLogin") as HTMLCanvasElement;
 const forms: NodeListOf<HTMLFormElement> = document.querySelectorAll("form");
 const [usernameRegister, passwordRegister, emailRegister, firstNameRegister, lastNameRegister] = modalRegister.querySelectorAll("input")
 const [usernameLogin, passwordLogin] = modalLogin.querySelectorAll("input")
-let showLoginModal:boolean = false
+
 
 
 //delete warnings on focus in inputs of modal Register
 modalRegister.querySelectorAll("input").forEach((input) => input?.addEventListener("focus", () => {
 	const warningMsg = document.querySelectorAll(".warning-msg")
-	if(warningMsg.length > 0)
-	deleteWarnings(true)
+	if (warningMsg.length > 0)
+		deleteWarnings(true)
 }))
-
-
 
 
 forms.forEach((element) => {
@@ -41,7 +35,7 @@ forms.forEach((element) => {
 
 
 function renderModal(htmlElement: HTMLCanvasElement, isShow: boolean, flex?: string) {
-	
+
 	if (flex) {
 		htmlElement.style.display = "flex"
 		return
@@ -74,43 +68,43 @@ const warningMsg = function (contentOfMsg: string, elementOfChildToShowItUnder: 
 
 
 const validateUsername = function (username: string): boolean {
-  return username.trim().length >= 3;
+	return username.trim().length >= 3;
 };
 
-const validatePassword = function(password:string):boolean {
-  return password.trim().length >= 5;
+const validatePassword = function (password: string): boolean {
+	return password.trim().length >= 5;
 };
 
-const validateEmail = function(email:string):boolean {
- if (typeof email !== 'string' || email.trim().length === 0) {
-    return false;
-  }
-  if (email.indexOf('@') === -1) {
-    return false;
-  }
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return emailRegex.test(email);
-};
-
-
-const validateName = function(name:string):boolean {
-  return name.trim().length >= 2;
+const validateEmail = function (email: string): boolean {
+	if (typeof email !== 'string' || email.trim().length === 0) {
+		return false;
+	}
+	if (email.indexOf('@') === -1) {
+		return false;
+	}
+	const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+	return emailRegex.test(email);
 };
 
 
+const validateName = function (name: string): boolean {
+	return name.trim().length >= 2;
+};
 
 
 
-const submitRegister = () =>{
-	console.log("Raw Inputs",usernameRegister.value, passwordRegister.value, emailRegister.value, firstNameRegister.value, lastNameRegister.value);
+
+
+const submitRegister = () => {
+	console.log("Raw Inputs", usernameRegister.value, passwordRegister.value, emailRegister.value, firstNameRegister.value, lastNameRegister.value);
 	let verifiedUsername: String = ""
 	let verifiedPassword: String = ""
 	let verifiedEmail: String = ""
 	let verifiedFirstName: String = ""
 	let verifiedLastName: String = ""
-	
+
 	deleteWarnings(true);
-	
+
 	if (validateUsername(usernameRegister.value)) {
 		verifiedUsername = usernameRegister.value
 	} else {
@@ -119,14 +113,14 @@ const submitRegister = () =>{
 
 	if (validatePassword(passwordRegister.value)) {
 		verifiedPassword = passwordRegister.value
-	
+
 	} else {
 		warningMsg("Needed a stronger password", passwordRegister);
 	}
 
 	if (validateEmail(emailRegister.value)) {
 		verifiedEmail = emailRegister.value
-		
+
 	} else {
 		warningMsg("Email isnt valied", emailRegister);
 	}
@@ -156,18 +150,22 @@ const submitRegister = () =>{
 		firstNameRegister.value = "";
 		lastNameRegister.value = "";
 
-		
 
-		
-		
+
+
+
 	}
 
 }
 
 
 const submitLogin = () => {
-	
+	usernameLogin.value
+	passwordLogin.value
 
+	Controller.checkLogin(usernameLogin.value, passwordLogin.value)
+
+	console.log("test");
 
 
 }

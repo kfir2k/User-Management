@@ -28,16 +28,16 @@ export class Controller{
 		const [userName , password , email , firstName , lastName] = arry
 		const user = new User(userName, password, email, firstName, lastName)
 		console.log("User object from controller", user);
-		
 	
 		arrayOfUsers.addUser(user)
 		arrayOfUsers.renderUsers()
 		console.log(arrayOfUsers);
-		
-		
-		
+	}
 
-
+	static checkLogin(login:string, password:string):boolean{
+		arrayOfUsers.isUserAttributesCorrectForLogin("username" , login)
+		// arrayOfUsers.isUserAttributesCorrectForLogin("username" , login)
+		
 
 	}
 

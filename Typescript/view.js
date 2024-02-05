@@ -1,14 +1,11 @@
 //view
 import { Controller } from "./controller.js";
 console.log("View online");
-const registerNewUserBtn = document.getElementById("registerBtn");
-const loginForm = document.getElementById("login");
 const modalRegister = document.getElementById("modalRegister");
 const modalLogin = document.getElementById("modalLogin");
 const forms = document.querySelectorAll("form");
 const [usernameRegister, passwordRegister, emailRegister, firstNameRegister, lastNameRegister] = modalRegister.querySelectorAll("input");
 const [usernameLogin, passwordLogin] = modalLogin.querySelectorAll("input");
-let showLoginModal = false;
 //delete warnings on focus in inputs of modal Register
 modalRegister.querySelectorAll("input").forEach((input) => input === null || input === void 0 ? void 0 : input.addEventListener("focus", () => {
     const warningMsg = document.querySelectorAll(".warning-msg");
@@ -117,6 +114,10 @@ const submitRegister = () => {
     }
 };
 const submitLogin = () => {
+    usernameLogin.value;
+    passwordLogin.value;
+    Controller.checkLogin(usernameLogin.value, passwordLogin.value);
+    console.log("test");
 };
 forms[0].addEventListener("submit", submitRegister);
 forms[1].addEventListener("submit", submitLogin);
