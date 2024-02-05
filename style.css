@@ -1,18 +1,18 @@
-*{
+* {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-		font-family: 'Arial', sans-serif;
+	font-family: 'Arial', sans-serif;
 }
 
 
-body{
-		background-color: #f5f5f5;
+body {
+	background-color: #f5f5f5;
 }
 
 
 
-.modal-register{
+.modal-register {
 
 	display: none;
 	background-color: blanchedalmond;
@@ -24,7 +24,7 @@ body{
 
 
 
-.warning-msg{
+.warning-msg {
 	color: red;
 	margin-bottom: 10px;
 	font-size: 10px;
@@ -60,7 +60,7 @@ body{
 
 /* Style for form labels */
 #register label {
-		margin-top: 5px;
+	margin-top: 5px;
 	display: block;
 	margin-bottom: 8px;
 	color: #555;
@@ -104,7 +104,7 @@ body{
 
 
 .modal-login {
-	display: block;
+	display: none;
 	background: rgba(0, 0, 0, 0.5);
 
 }
@@ -187,21 +187,22 @@ body{
 
 
 
-#userDashboardManagement{
+#userDashboardManagement {
 
 	font-family: 'Arial', sans-serif;
-		background-color: #f5f5f5;
-		margin: 0;
-		
-		display: flex;
-		align-items: center;
-		justify-content: center;
+	background-color: #f5f5f5;
+	margin: 0;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
 
 }
 
 table,
 th,
-td, tbody #usersTable{
+td,
+tbody #usersTable {
 	border: 1px solid rgb(230, 230, 230);
 
 }
@@ -240,6 +241,3 @@ td, tbody #usersTable{
 	background-color: #f5f5f5;
 	transition: background-color 0.3s;
 }
-
-
-

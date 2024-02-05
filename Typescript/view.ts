@@ -13,7 +13,7 @@ const [usernameLogin, passwordLogin] = modalLogin.querySelectorAll("input")
 modalRegister.querySelectorAll("input").forEach((input) => input?.addEventListener("focus", () => {
 	const warningMsg = document.querySelectorAll(".warning-msg")
 	if (warningMsg.length > 0)
-		deleteWarnings(true)
+		deleteWarnings()
 }))
 
 
@@ -21,7 +21,7 @@ modalRegister.querySelectorAll("input").forEach((input) => input?.addEventListen
 modalLogin.querySelectorAll("input").forEach((input) => input?.addEventListener("focus", () => {
 	const warningMsg = document.querySelectorAll(".warning-msg")
 	if (warningMsg.length > 0)
-		deleteWarnings(true)
+		deleteWarnings()
 }))
 
 
@@ -61,7 +61,7 @@ function renderModal(htmlElement: HTMLCanvasElement, isShow: boolean, flex?: str
 	return
 }
 
-const deleteWarnings = function (showMsg: boolean) {
+const deleteWarnings = function () {
 	const warningMsg = document.querySelectorAll(".warning-msg")
 	warningMsg.forEach((element) => { element.remove() });
 	return
@@ -115,7 +115,7 @@ const submitRegister = () => {
 	let verifiedFirstName: String = ""
 	let verifiedLastName: String = ""
 
-	deleteWarnings(true);
+	deleteWarnings();
 
 	if (validateUsername(usernameRegister.value)) {
 		verifiedUsername = usernameRegister.value
@@ -172,7 +172,7 @@ const submitRegister = () => {
 
 
 const submitLogin = () => {
-	deleteWarnings(true)
+	deleteWarnings()
 	const isUserLoggedIn: boolean = Controller.checkLogin(usernameLogin.value, passwordLogin.value)
 	console.log(isUserLoggedIn);
 

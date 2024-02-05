@@ -2,9 +2,9 @@ console.log("Services Online");
 
 
 enum STATUS {
-	ONLINE = "ONLINE",
-	OFFLINE = "OFFLINE",
-	PENDING = "PENDING",
+	ONLINE = "Online",
+	OFFLINE = "Offline",
+	PENDING = "Pending",
 }
 
 export class UsersArry {
@@ -91,11 +91,6 @@ export class UsersArry {
 
 	isUserAttributesCorrectForLogin(attribute: keyof User, inputFromUser: string): boolean {
 
-		console.log("attribute", attribute);
-		console.log("inputFromUser", inputFromUser);
-
-
-
 		if (this._array.find((obj) => obj[attribute] === inputFromUser)) {
 			return true
 		}
@@ -104,8 +99,6 @@ export class UsersArry {
 
 
 	deleteUser(user: User) {
-		console.log("this:", this);
-		console.log("User:", user);
 		let indexToDelete = this._array.findIndex(obj => obj === user);
 		this._array.splice(indexToDelete, 1)
 		this.renderUsers()
@@ -119,7 +112,7 @@ export class UsersArry {
 		this.renderUsers()
 	}
 
-	loginUser(username:string){
+	loginUser(username: string) {
 		let indexOfClickedRow: number = this._array.findIndex(obj => obj.username === username);
 		this._array[indexOfClickedRow].status = STATUS.ONLINE
 		this.renderUsers()

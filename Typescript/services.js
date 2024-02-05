@@ -1,9 +1,9 @@
 console.log("Services Online");
 var STATUS;
 (function (STATUS) {
-    STATUS["ONLINE"] = "ONLINE";
-    STATUS["OFFLINE"] = "OFFLINE";
-    STATUS["PENDING"] = "PENDING";
+    STATUS["ONLINE"] = "Online";
+    STATUS["OFFLINE"] = "Offline";
+    STATUS["PENDING"] = "Pending";
 })(STATUS || (STATUS = {}));
 export class UsersArry {
     constructor() {
@@ -63,16 +63,12 @@ export class UsersArry {
         return true;
     }
     isUserAttributesCorrectForLogin(attribute, inputFromUser) {
-        console.log("attribute", attribute);
-        console.log("inputFromUser", inputFromUser);
         if (this._array.find((obj) => obj[attribute] === inputFromUser)) {
             return true;
         }
         return false;
     }
     deleteUser(user) {
-        console.log("this:", this);
-        console.log("User:", user);
         let indexToDelete = this._array.findIndex(obj => obj === user);
         this._array.splice(indexToDelete, 1);
         this.renderUsers();

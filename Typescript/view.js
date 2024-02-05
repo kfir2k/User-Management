@@ -10,12 +10,12 @@ const [usernameLogin, passwordLogin] = modalLogin.querySelectorAll("input");
 modalRegister.querySelectorAll("input").forEach((input) => input === null || input === void 0 ? void 0 : input.addEventListener("focus", () => {
     const warningMsg = document.querySelectorAll(".warning-msg");
     if (warningMsg.length > 0)
-        deleteWarnings(true);
+        deleteWarnings();
 }));
 modalLogin.querySelectorAll("input").forEach((input) => input === null || input === void 0 ? void 0 : input.addEventListener("focus", () => {
     const warningMsg = document.querySelectorAll(".warning-msg");
     if (warningMsg.length > 0)
-        deleteWarnings(true);
+        deleteWarnings();
 }));
 forms.forEach((element) => {
     element === null || element === void 0 ? void 0 : element.addEventListener("submit", (event) => {
@@ -35,7 +35,7 @@ function renderModal(htmlElement, isShow, flex) {
     }
     return;
 }
-const deleteWarnings = function (showMsg) {
+const deleteWarnings = function () {
     const warningMsg = document.querySelectorAll(".warning-msg");
     warningMsg.forEach((element) => { element.remove(); });
     return;
@@ -73,7 +73,7 @@ const submitRegister = () => {
     let verifiedEmail = "";
     let verifiedFirstName = "";
     let verifiedLastName = "";
-    deleteWarnings(true);
+    deleteWarnings();
     if (validateUsername(usernameRegister.value)) {
         verifiedUsername = usernameRegister.value;
     }
@@ -119,7 +119,7 @@ const submitRegister = () => {
     }
 };
 const submitLogin = () => {
-    deleteWarnings(true);
+    deleteWarnings();
     const isUserLoggedIn = Controller.checkLogin(usernameLogin.value, passwordLogin.value);
     console.log(isUserLoggedIn);
     if (isUserLoggedIn) {
