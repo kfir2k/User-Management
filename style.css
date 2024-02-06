@@ -11,6 +11,25 @@ body {
 }
 
 
+.action-flex {
+	gap: 5px;
+	display: flex;
+	flex-direction: row;
+}
+
+.action-flex *:hover {
+
+	transition: 0.3s transform;
+	transform: scale(1.04);
+
+}
+
+.action-flex *:active {
+
+	fill: #3498db;
+
+}
+
 
 .modal-register {
 

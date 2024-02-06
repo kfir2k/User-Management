@@ -63,6 +63,7 @@ function renderModal(htmlElement: HTMLCanvasElement, isShow: boolean, flex?: str
 
 const deleteWarnings = function () {
 	const warningMsg = document.querySelectorAll(".warning-msg")
+	console.log("warningMsg catch all", warningMsg);
 	warningMsg.forEach((element) => { element.remove() });
 	return
 }
@@ -88,14 +89,15 @@ const validatePassword = function (password: string): boolean {
 };
 
 const validateEmail = function (email: string): boolean {
-	if (typeof email !== 'string' || email.trim().length === 0) {
-		return false;
-	}
-	if (email.indexOf('@') === -1) {
-		return false;
-	}
-	const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-	return emailRegex.test(email);
+	// if (typeof email !== 'string' || email.trim().length === 0) {
+	// 	return false;
+	// }
+	// if (email.indexOf('@') === -1) {
+	// 	return false;
+	// }
+	// const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+	// return emailRegex.test(email);
+	return true
 };
 
 
@@ -150,12 +152,12 @@ const submitRegister = () => {
 
 
 	if (verifiedUsername.length > 0 && verifiedPassword.length > 0 && verifiedEmail.length > 0 && verifiedFirstName.length > 0 && verifiedLastName.length > 0) {
-		let arryOfVerifiedUserDetiels: string[] = [verifiedUsername.toString(), verifiedPassword.toString(), verifiedEmail.toString(), verifiedFirstName.toString(), verifiedLastName.toString()];
-		if (Controller.checkDuplcates(arryOfVerifiedUserDetiels)) {
+		let arryOfVerifiedUserDetails: string[] = [verifiedUsername.toString(), verifiedPassword.toString(), verifiedEmail.toString(), verifiedFirstName.toString(), verifiedLastName.toString()];
+		if (Controller.checkDuplcates(arryOfVerifiedUserDetails)) {
 			return warningMsg("User with this name already exists", usernameRegister);
 		}
 		renderModal(modalLogin, true);
-		Controller.getUserFromSubmit(arryOfVerifiedUserDetiels)
+		Controller.getUserFromSubmit(arryOfVerifiedUserDetails)
 		usernameRegister.value = "";
 		passwordRegister.value = "";
 		emailRegister.value = "";
@@ -195,6 +197,5 @@ const submitLogin = () => {
 
 forms[0].addEventListener("submit", submitRegister)
 forms[1].addEventListener("submit", submitLogin)
-
 
 
