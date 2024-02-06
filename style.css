@@ -8,17 +8,136 @@
 
 body {
 	background-color: #f5f5f5;
+
 }
+
+
+
+
+
+#editModal {
+	position: fixed;
+	display: none;
+	padding-top: 150px;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+
+	background-color: rgb(0, 0, 0);
+	background-color: rgba(0, 0, 0, 0.4);
+
+}
+
+
+
+#editModal form {
+
+	display: flex;
+	flex-direction: column;
+	background-color: #fefefe;
+	margin: auto;
+	padding: 30px;
+	border: 1px solid #888;
+	width: 40%;
+	border-radius: 30px;
+	box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+
+}
+
+
+
+
+/* Style for the form headings */
+#editModal h1 {
+
+	margin-bottom: 10px;
+	text-align: center;
+	color: #333;
+}
+
+/* Style for form labels */
+#editModal label {
+	margin-top: 5px;
+	display: block;
+	margin-bottom: 8px;
+	color: #555;
+}
+
+/* Style for form inputs */
+#editModal input {
+	width: 100%;
+	padding: 10px;
+	margin-bottom: 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+}
+
+/* Style for the Register And Login button */
+#editBtn {
+	background-color: #4CAF50;
+	color: #fff;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	font-size: 16px;
+	transition: background-color 0.3s;
+}
+
+#editBtn:hover {
+	background-color: #45a049;
+}
+
+
+
+
+
+
+
+.closeEditModalBtn {
+	position: absolute;
+
+
+	/* text-align: right; */
+	/* height: 100%; */
+	/* width: 34%; */
+	color: #aaaaaa;
+	font-size: 28px;
+	font-weight: bold;
+}
+
+.closeEditModalBtn:hover,
+.closeEditModalBtn:focus {
+	color: #000;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 .action-flex {
 	gap: 5px;
 	display: flex;
+	justify-content: center;
 	flex-direction: row;
 }
 
 .action-flex *:hover {
-
+	fill: #555;
 	transition: 0.3s transform;
 	transform: scale(1.04);
 
@@ -31,15 +150,10 @@ body {
 }
 
 
-.modal-register {
-
-	display: none;
-	background-color: blanchedalmond;
 
 
 
 
-}
 
 
 
@@ -55,23 +169,26 @@ body {
 
 
 .modal-register {
-	display: flex;
-	background: rgba(0, 0, 0, 0.5);
+
+	box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+	padding-top: 20px;
+	background-color: #ffffff;
+	border-radius: 0px 0px 30px 30px;
 
 }
 
 /* Style for the registration form */
 #register {
-	/*display: flex;*/
-	background: #fff;
+	display: flex;
+	flex-direction: row;
+	gap: 10px;
 	padding: 20px;
-	/*border-radius: 10px;*/
 	max-width: 100%;
 	width: 100%;
 }
 
 /* Style for the form headings */
-#register h1 {
+.modal-register h1 {
 
 	text-align: center;
 	color: #333;
@@ -87,6 +204,7 @@ body {
 
 /* Style for form inputs */
 #register input {
+
 	width: 100%;
 	padding: 10px;
 	margin-bottom: 5px;
@@ -94,8 +212,27 @@ body {
 	border-radius: 5px;
 }
 
+#register div {
+	flex: 1;
+}
+
+#register div:nth-child(3) {
+	flex: 2;
+
+}
+
+
+#register div:nth-child(6) {
+	display: flex;
+	justify-content: space-around;
+
+}
+
 /* Style for the Register And Login button */
 #registerBtn {
+	width: 150px;
+	height: 36px;
+	margin-top: 30px;
 	background-color: #4CAF50;
 	color: #fff;
 	padding: 10px 20px;
@@ -124,18 +261,19 @@ body {
 
 .modal-login {
 	display: none;
-	background: rgba(0, 0, 0, 0.5);
+
 
 }
 
 /* Style for the registration form */
 #login {
-	/*display: flex;*/
+	box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+	margin: 30px;
 	background: #fff;
 	padding: 20px;
-	/*border-radius: 10px;*/
+	border-radius: 30px;
 	max-width: 100%;
-	width: 100%;
+	/* width: 100%; */
 }
 
 /* Style for the form headings */
@@ -209,7 +347,7 @@ body {
 #userDashboardManagement {
 
 	font-family: 'Arial', sans-serif;
-	background-color: #f5f5f5;
+	/* background-color: #f5f5f5; */
 	margin: 0;
 
 	display: flex;
@@ -259,4 +397,23 @@ tbody #usersTable {
 #usersTable tbody tr:hover {
 	background-color: #f5f5f5;
 	transition: background-color 0.3s;
+}
+
+#usersTable thead th:last-child {
+	text-align: center;
+
+}
+
+
+
+
+
+
+@media screen and (max-width: 800px) {
+
+
+	body {
+		background-color: red;
+	}
+
 }

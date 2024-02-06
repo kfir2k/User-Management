@@ -17,29 +17,31 @@
 
 
 	<section id="modalRegister" class="modal-register">
+		<h1>Register</h1>
 		<form id="register">
-			<h1>Register</h1>
+
 			<div>
 				<label for="usernameRegister">Username</label>
-				<input id="usernameRegister" type="text" name="usernameRegister" placeholder="Enter Username" />
+				<input id="usernameRegister" type="text" name="usernameRegister" placeholder="Username" />
 			</div>
 			<div>
 				<label for="passwordRegister">Password</label>
-				<input id="passwordRegister" type="password" name="passwordRegister" placeholder="Enter Password" />
+				<input id="passwordRegister" type="password" name="passwordRegister" placeholder="Password" />
 			</div>
 			<div>
 				<label for="emailRegister">Email</label>
-				<input id="emailRegister" type="text" name="emailRegister" placeholder="" />
+				<input id="emailRegister" type="text" name="emailRegister" placeholder="Email" />
 			</div>
 			<div>
 				<label for="firstNameRegister">First Name</label>
-				<input id="firstNameRegister" type="text" name="firstNameRegister" placeholder="" />
+				<input id="firstNameRegister" type="text" name="firstNameRegister" placeholder="First Name" />
 			</div>
 			<div>
 				<label for="lastNameRegister">Last Name</label>
-				<input id="lastNameRegister" type="text" name="lastNameRegister" placeholder="" />
+				<input id="lastNameRegister" type="text" name="lastNameRegister" placeholder="Last name" />
 			</div>
-			<button id="registerBtn">Register</button>
+			<div><button id="registerBtn">Register</button></div>
+
 		</form>
 	</section>
 
@@ -65,10 +67,10 @@
 			</div>
 			<div>
 				<label for="passwordLogin">Password</label>
-				<input id="passwordLogin" type="text" name="passwordLogin" placeholder="Enter Password" />
+				<input id="passwordLogin" type="password" name="passwordLogin" placeholder="Enter Password" />
 			</div>
+			<div><button id="loginBtn">Login</button></div>
 
-			<button id="loginBtn">Login</button>
 
 
 
@@ -108,7 +110,31 @@
 
 
 
+	<section id="editModal">
 
+		<form id="edit">
+			<div><span class="closeEditModalBtn">&times;</span></div>
+
+
+			<h1>Edit User</h1>
+			<div>
+				<label for="editFirstName">First Name</label>
+				<input id="editFirstName" type="text" name="editFirstName" placeholder="New First Name" />
+			</div>
+			<div>
+				<label for="editLastName">Last Name</label>
+				<input id="editLastName" type="text" name="editLastName" placeholder="New Last Name" />
+			</div>
+
+			<button id="editBtn">Update</button>
+
+
+
+		</form>
+
+
+
+	</section>
 
 
 

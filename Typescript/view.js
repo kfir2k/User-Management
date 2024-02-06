@@ -55,15 +55,14 @@ const validatePassword = function (password) {
     return password.trim().length >= 5;
 };
 const validateEmail = function (email) {
-    // if (typeof email !== 'string' || email.trim().length === 0) {
-    // 	return false;
-    // }
-    // if (email.indexOf('@') === -1) {
-    // 	return false;
-    // }
-    // const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    // return emailRegex.test(email);
-    return true;
+    if (typeof email !== 'string' || email.trim().length === 0) {
+        return false;
+    }
+    if (email.indexOf('@') === -1) {
+        return false;
+    }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
 };
 const validateName = function (name) {
     return name.trim().length >= 2;

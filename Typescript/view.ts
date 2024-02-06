@@ -89,15 +89,15 @@ const validatePassword = function (password: string): boolean {
 };
 
 const validateEmail = function (email: string): boolean {
-	// if (typeof email !== 'string' || email.trim().length === 0) {
-	// 	return false;
-	// }
-	// if (email.indexOf('@') === -1) {
-	// 	return false;
-	// }
-	// const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-	// return emailRegex.test(email);
-	return true
+	if (typeof email !== 'string' || email.trim().length === 0) {
+		return false;
+	}
+	if (email.indexOf('@') === -1) {
+		return false;
+	}
+	const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+	return emailRegex.test(email);
+
 };
 
 
