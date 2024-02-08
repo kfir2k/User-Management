@@ -1,6 +1,6 @@
 //view
 import { Controller } from "./controller.js";
-console.log("View online");
+
 const modalRegister = document.getElementById("modalRegister") as HTMLCanvasElement;
 const modalLogin = document.getElementById("modalLogin") as HTMLCanvasElement;
 const forms: NodeListOf<HTMLFormElement> = document.querySelectorAll("form");
@@ -63,7 +63,7 @@ function renderModal(htmlElement: HTMLCanvasElement, isShow: boolean, flex?: str
 
 const deleteWarnings = function () {
 	const warningMsg = document.querySelectorAll(".warning-msg")
-	console.log("warningMsg catch all", warningMsg);
+	
 	warningMsg.forEach((element) => { element.remove() });
 	return
 }
@@ -110,7 +110,7 @@ const validateName = function (name: string): boolean {
 
 
 const submitRegister = () => {
-	console.log("Raw Inputs", usernameRegister.value, passwordRegister.value, emailRegister.value, firstNameRegister.value, lastNameRegister.value);
+	
 	let verifiedUsername: String = ""
 	let verifiedPassword: String = ""
 	let verifiedEmail: String = ""
@@ -176,7 +176,7 @@ const submitRegister = () => {
 const submitLogin = () => {
 	deleteWarnings()
 	const isUserLoggedIn: boolean = Controller.checkLogin(usernameLogin.value, passwordLogin.value)
-	console.log(isUserLoggedIn);
+	
 
 	if (isUserLoggedIn) {
 

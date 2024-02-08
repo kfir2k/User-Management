@@ -1,4 +1,4 @@
-console.log("Services Online");
+
 
 
 enum STATUS {
@@ -20,7 +20,7 @@ export class UsersArry {
 		if (index !== -1) {
 			this._array.splice(index, 1);
 		} else {
-			console.log(`${user} not found in the array.`);
+			
 		}
 	}
 	renderUsers() {

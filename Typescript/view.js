@@ -1,6 +1,5 @@
 //view
 import { Controller } from "./controller.js";
-console.log("View online");
 const modalRegister = document.getElementById("modalRegister");
 const modalLogin = document.getElementById("modalLogin");
 const forms = document.querySelectorAll("form");
@@ -37,7 +36,6 @@ function renderModal(htmlElement, isShow, flex) {
 }
 const deleteWarnings = function () {
     const warningMsg = document.querySelectorAll(".warning-msg");
-    console.log("warningMsg catch all", warningMsg);
     warningMsg.forEach((element) => { element.remove(); });
     return;
 };
@@ -68,7 +66,6 @@ const validateName = function (name) {
     return name.trim().length >= 2;
 };
 const submitRegister = () => {
-    console.log("Raw Inputs", usernameRegister.value, passwordRegister.value, emailRegister.value, firstNameRegister.value, lastNameRegister.value);
     let verifiedUsername = "";
     let verifiedPassword = "";
     let verifiedEmail = "";
@@ -122,7 +119,6 @@ const submitRegister = () => {
 const submitLogin = () => {
     deleteWarnings();
     const isUserLoggedIn = Controller.checkLogin(usernameLogin.value, passwordLogin.value);
-    console.log(isUserLoggedIn);
     if (isUserLoggedIn) {
         usernameLogin.value = "";
         passwordLogin.value = "";

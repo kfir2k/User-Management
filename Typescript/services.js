@@ -1,4 +1,3 @@
-console.log("Services Online");
 var STATUS;
 (function (STATUS) {
     STATUS["ONLINE"] = "Online";
@@ -18,7 +17,6 @@ export class UsersArry {
             this._array.splice(index, 1);
         }
         else {
-            console.log(`${user} not found in the array.`);
         }
     }
     renderUsers() {
