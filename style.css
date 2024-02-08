@@ -260,25 +260,50 @@ body {
 
 
 .modal-login {
-	display: none;
-
+	text-align: center;
+	margin-top: 10px;
+	margin: 10px auto;
+	border-radius: 30px;
+	max-width: 700px;
+	/*display: none;             ============================================================================= need to update*/
+	background-color: white;
+	box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 
 }
 
 /* Style for the registration form */
 #login {
-	box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-	margin: 30px 10px;
+	
+	display: flex;
+	flex-direction: column;
 	background: #fff;
 	padding: 20px;
 	border-radius: 30px;
 	max-width: 100%;
+	
 	/* width: 100%; */
 }
 
-/* Style for the form headings */
-#login h1 {
+.login-inputs{
+	display: flex;
+	gap: 20px;
+	text-align: left;
+	
+}
 
+.login-inputs div {
+flex: 1;
+}
+
+#login label{
+	text-align: left;
+}
+
+
+/* Style for the form headings */
+.modal-login h1 {
+
+	padding-top: 20px;
 	text-align: center;
 	color: #333;
 }
@@ -302,7 +327,8 @@ body {
 
 /* Style for the Register And Login button */
 #loginBtn {
-	background-color: #4CAF50;
+	width: 100px;
+	background-color: #ff8800;
 	color: #fff;
 	padding: 10px 20px;
 	border: none;
@@ -313,7 +339,7 @@ body {
 }
 
 #loginBtn:hover {
-	background-color: #45a049;
+	background-color: #6dacff;
 }
 
 
@@ -361,11 +387,16 @@ th,
 td,
 tbody #usersTable {
 	border: 1px solid rgb(230, 230, 230);
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow:ellipsis;
 
 }
 
-#usersTable {
 
+#usersTable {
+	
+table-layout: fixed;
 	border-collapse: collapse;
 	width: 80%;
 	margin: 20px;
@@ -420,5 +451,38 @@ tbody #usersTable {
 		max-width: 100%;
 		width: 100%;
 	}
+
+
+	.login-inputs{
+		flex-direction: column;
+	}
+
+
+
+#usersTable {
+	border-collapse: collapse;
+	width: 100%;
+	margin: 10px
+}
+
+
+
+#usersTable thead th {
+	padding: 5px;
+	font-size: 10px;
+}
+
+#usersTable tbody td {
+	padding: 5px;
+	font-size: 9px;
+
+}
+
+.modal-dashboard{
+	display: flex;
+	width: 100%;
+}
+
+
 
 }
